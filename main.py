@@ -49,7 +49,7 @@ async def game_cancel(msg: types.message, state: FSMContext):
     await state.finish()
 
 
-@dp.message_handler(Text(equals="Новая игра"))
+@dp.message_handler(Text(equals="Новая игра"), state="*")
 async def new_game(msg: types.Message):
     await msg.answer(text="За сколько попыток ты угадаешь число?", reply_markup=game_kb())
     await msg.delete()
@@ -105,8 +105,7 @@ async def game_round(msg: types.Message, state: MyStatesGroup.new_round):
             await state.finish()
             await msg.answer("Ты выиграл!", reply_markup=make_kb())
             await bot.send_sticker(chat_id=msg.chat.id,
-                                   sticker="CACAgQAAxkBAAED335jns2fhGUq478bWpOtlNotORM5QAC8QMAAqDqOwXNGqsU9J2o6iwE")
-
+                                   sticker="CAACAgQAAxkBAAEHpg5j5J7Yb7HWEnJkJSnjwcHp96kC5QAC8QMAAqDqOwXNGqsU9J2o6i4E")
         elif guess < data["secret_number"] and data["max_attempts"]:
             await msg.answer(text=f"Не, моё число больше, чем {guess}, попробуй ещё раз",
                              reply_markup=game_kb())
