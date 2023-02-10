@@ -105,7 +105,7 @@ async def game_round(msg: types.Message, state: MyStatesGroup.new_round):
             await state.finish()
             await msg.answer("Ты выиграл!", reply_markup=make_kb())
             await bot.send_sticker(chat_id=msg.chat.id,
-                                   sticker="CAACAgQAAxkBAAEHpg5j5J7Yb7HWEnJkJSnjwcHp96kC5QAC8QMAAqDqOwXNGqsU9J2o6i4E")
+                                   sticker="CAACAgQAAxkBAAIKiGPkwh-tkRM9buouxqbSK_p6ahGuAALxAwACoOo7Bc0aqxT0najqLgQ")
         elif guess < data["secret_number"] and data["max_attempts"]:
             await msg.answer(text=f"Не, моё число больше, чем {guess}, попробуй ещё раз",
                              reply_markup=game_kb())
@@ -119,4 +119,3 @@ async def game_round(msg: types.Message, state: MyStatesGroup.new_round):
 
 if __name__ == "__main__":
     executor.start_polling(dp, skip_updates=True)
-
